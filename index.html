@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileProcess</title>
+
+    <style>
+        iframe {
+            display: block;
+            border: solid 1px;
+            height: 60vh;
+            /*设置高度百分比,一直调到只有一个滚动调为止*/
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>FileProcess</h2>
+
+    <h3>加密操作</h3>
+    <div>
+        <button id="upFile">要处理的文件</button>
+
+        <button id="downindexfile">下载加密索引文件</button>
+
+        <button id="downfile">下载加密后文件</button>
+    </div>
+
+
+    <br>
+
+    <h3>解密操作</h3>
+    <div>
+        <button id="upencodedfile">要进行解密的文件</button>
+
+        <button id="downdecodedfile">保存解密后的文件</button>
+    </div>
+
+    <br>
+    <h3>搜索索引生成</h3>
+    <input id="keywordin" type="text" placeholder="输入要查询的关键词" oninput="keywordInoninput ()"> <span>==></span> 
+    <input id="keywordout" type="text" value="点击复制到剪贴板" onfocus="keywordOutOnfocus()">
+
+    <br><br>
+
+
+    <div class="iframebox">
+        <iframe src="http://localhost:8080/index"></iframe>
+    </div>
+
+
+    <script src="./render/index.js"></script>
+
+
+</body>
+
+</html>
