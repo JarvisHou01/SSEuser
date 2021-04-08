@@ -9,6 +9,7 @@ const nodejieba = require('nodejieba')
 
 const key = '9cd5b4cf89949207'
 
+const Alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'g', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 var upFile = document.getElementById('upFile')
 var downindexfile = document.getElementById('downindexfile')
@@ -20,9 +21,11 @@ var downdecodedfile = document.getElementById('downdecodedfile')
 
 
 
+
+
 var upfilepath = null;
 
-var keywordset =null;
+var keywordset = null;
 
 
 
@@ -73,6 +76,20 @@ function decryption_file(file_path, key) {
 
 
 
+var currentope = document.getElementById('currentope')
+function refreshOPE(){
+
+    var d = new Date();
+    var hhmm = d.getHours() +''+d.getMinutes()
+
+    console.log(hhmm)
+
+    currentope.setAttribute("value",hhmm*510+20)
+
+}
+setInterval("refreshOPE()","1000");
+
+
 
 upFile.onclick = function () {
 
@@ -104,7 +121,7 @@ upFile.onclick = function () {
             }
 
             keywordset = tempset;
-            
+
             alert('读文件完成')
 
         }
@@ -112,7 +129,7 @@ upFile.onclick = function () {
 
 
 
-        
+
 
     })
 
@@ -122,7 +139,7 @@ downindexfile.onclick = function () {
 
     dialog.showSaveDialog({
         title: '保存加密后的索引文件',
-        defaultPath:path.basename(upfilepath,path.extname(upfilepath))+'_index.qducodedindex',
+        defaultPath: path.basename(upfilepath, path.extname(upfilepath)) + '_index.qducodedindex',
         filters: [
             { name: '加密索引', extensions: ['qducodedindex'] }
         ],
@@ -133,11 +150,48 @@ downindexfile.onclick = function () {
 
         var final = '';
 
+        // 第一版 精确关键词
+        // for (let v of keywordset) {
+        //     console.log(v)
+        //     final += aesCryption(v, key) + '\n'
+        // }
 
+
+        // 第二版 fuzzy
+        // 问题 强碰撞 of if tell kell kill 大量数据 大量重复数据
         for (let v of keywordset) {
-            console.log(v)
-            final += aesCryption(v, key) + '\n'
+            var pattern2 = new RegExp("[A-Za-z]+");
+            if (pattern2.test(v)) {
+                console.log("检测到英文,fuzzy")
+                v = v.toLowerCase()
+                console.log(v)
+                console.log(v.length)
+                for (let index = 0; index < v.length; index++) {
+                    var sub1 = v.substr(0, index)
+                    var sub2 = v.substr(index + 1, v.length)
+
+                    for (let indexofalphabet = 0; indexofalphabet < Alphabet.length; indexofalphabet++) {
+                        const element = Alphabet[indexofalphabet];
+                        var fuzzy = sub1 + element + sub2
+                        final += aesCryption(fuzzy, key) + '\n'
+                    }
+                }
+
+            }else{
+                console.log("非英文")
+                v = v.toLowerCase()
+                console.log(v)
+                final += aesCryption(v, key) + '\n'
+
+            }
+
+
         }
+
+
+
+        console.log(final)
+
 
 
         fs.writeFileSync(result.filePath, final)
@@ -152,7 +206,7 @@ downindexfile.onclick = function () {
 downfile.onclick = function () {
     dialog.showSaveDialog({
         title: '保存加密后文件',
-        defaultPath:path.basename(upfilepath,path.extname(upfilepath))+'_encoded.qducodedfile',
+        defaultPath: path.basename(upfilepath, path.extname(upfilepath)) + '_encoded.qducodedfile',
         filters: [
             { name: '加密文件', extensions: ['qducodedfile'] }
         ],

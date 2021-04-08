@@ -23,7 +23,7 @@ app.on('ready', () => {
     })
     
     //开发工具
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     mainWindow.loadFile('index.html')
 
