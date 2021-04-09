@@ -11,6 +11,8 @@ const Menu = electron.Menu
 app.on('ready', () => {
     Menu.setApplicationMenu(null)
 
+    
+
     mainWindow = new BrowserWindow({
         width: 1000,
         height: 1000,
@@ -21,6 +23,7 @@ app.on('ready', () => {
             enableRemoteModule: true
         }
     })
+    
     
     //开发工具
     mainWindow.webContents.openDevTools()

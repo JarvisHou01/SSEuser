@@ -287,3 +287,19 @@ function keywordOutOnfocus() {
     clipboard.writeText(keywordout.getAttribute("value"))
 }
 
+
+
+var opevalue = document.getElementById('opevalue')
+var operesult = document.getElementById('operesult')
+
+function opeInoninput(){
+    operesult.setAttribute("value",opevalue.value*510 + 20)
+
+}
+
+function operesultOutOnfocus() {
+
+    clipboard.writeText(operesult.getAttribute("value"))
+}
+
+

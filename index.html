@@ -22,8 +22,9 @@
 
     <h2>FileProcess</h2>
 
-    <h3>加密操作</h3>
+
     <div>
+        <h3>加密操作</h3>
         <button id="upFile">要处理的文件</button>
 
         <button id="downindexfile">下载加密索引文件</button>
@@ -34,28 +35,43 @@
     </div>
 
 
-    <br>
 
-    <h3>解密操作</h3>
     <div>
+        <h3>解密操作</h3>
         <button id="upencodedfile">要进行解密的文件</button>
 
         <button id="downdecodedfile">保存解密后的文件</button>
     </div>
 
-    <br>
-    <h3>搜索索引生成</h3>
-    <input id="keywordin" type="text" placeholder="输入要查询的关键词" oninput="keywordInoninput ()"> <span>==></span> 
-    <input id="keywordout" type="text" value="点击复制到剪贴板" onfocus="keywordOutOnfocus()">
 
-    <br><br>
-
-
-    <div class="iframebox">
-        <iframe src="http://localhost:8080/index"></iframe>
+    <div>
+        <h3>搜索索引生成</h3>
+        <input id="keywordin" type="text" placeholder="输入要查询的关键词" oninput="keywordInoninput ()"> <span>==></span>
+        <input id="keywordout" type="text" value="点击复制到剪贴板" onfocus="keywordOutOnfocus()">
     </div>
 
 
+
+    <div>
+        <h3>ope索引生成</h3>
+        <input id="opevalue" type="text" placeholder="opevalue" oninput="opeInoninput ()"> <span>==></span>
+        <input id="operesult" type="text" value="点击复制到剪贴板" onfocus="operesultOutOnfocus()">
+    </div>
+
+
+
+
+    <br>
+    <br>
+
+
+
+
+    <div class="iframebox" style="border: 8px solid red;">
+        <iframe src="http://localhost:8080/index" name="serverpage"></iframe>
+    </div>
+
+    <a href="http://localhost:8080/index" target="serverpage">刷新iframe</a>
     <script src="./render/index.js"></script>
 
 
