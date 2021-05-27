@@ -1,39 +1,29 @@
-var electron = require('electron')
+const { app, BrowserWindow } = require("electron")
 
-var app = electron.app
 
-var BrowserWindow = electron.BrowserWindow
-
-var mainWindow = null
-
-const Menu = electron.Menu
-
-app.on('ready', () => {
-    Menu.setApplicationMenu(null)
-
-    
-
-    mainWindow = new BrowserWindow({
-        width: 1000,
-        height: 1000,
-        // resizable: false,
+const createWindow = function () {
+    const mainWindow = new BrowserWindow({
+        width: 1500,
+        height: 1500,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            enableRemoteModule: true
+            enableRemoteModule: true,
+            webSecurity: false
         }
     })
+
+    mainWindow.loadFile("index.html")
     
-    
-    //开发工具
     mainWindow.webContents.openDevTools()
-
-    mainWindow.loadFile('index.html')
-
+}
 
 
-    mainWindow.on('closed', () => {
-        mainWindow = null
-    })
+app.on('ready', createWindow)
 
+
+app.on('window-all-closed', function () {
+    app.quit()
 })
+
+

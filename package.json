@@ -1,13 +1,17 @@
 {
-  "name": "fileprocess",
+  "name": "fileprocessv2",
   "version": "1.0.0",
+  "description": "",
   "main": "main.js",
-  "license": "MIT",
-  "dependencies": {
-    "electron": "^12.0.0",
-    "nodejieba": "^2.5.1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
-  "devDependencies": {
-    "electron-packager": "^15.2.0"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "electron": "^13.0.0"
   }
 }
