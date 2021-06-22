@@ -1,44 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>FileProcess</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/buttons.css">
+
+
 </head>
 
-
 <body>
-    hello
+    <div id="app">
+        <div id="app-bar">
+            <div id="app-title">
+                用户加密Client
+            </div>
+            <div id="app-action">
+                <div class="app-action-button" onclick="zuixiaohua()">
+                    <svg t="1620644328800" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="11056" width="200" height="200">
+                        <path
+                            d="M929.8 528.1H93.5c-15.5 0-28-12.5-28-28s12.5-28 28-28h836.3c15.5 0 28 12.5 28 28s-12.5 28-28 28z"
+                            fill="#ffffff" p-id="11057" data-spm-anchor-id="a313x.7781069.0.i6" class="selected"></path>
+                    </svg>
+
+                </div>
+                <div class="app-action-button" onclick="zuidahua()">
+                    <svg t="1620644248534" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="10085" width="200" height="200">
+                        <path
+                            d="M934.4 110.933333c-4.266667-8.533333-12.8-17.066667-21.333333-21.333333-4.266667-4.266667-12.8-4.266667-17.066667-4.266667h-256c-25.6 0-42.666667 17.066667-42.666667 42.666667s17.066667 42.666667 42.666667 42.666667h153.6l-226.133333 226.133333c-17.066667 17.066667-17.066667 42.666667 0 59.733333 8.533333 8.533333 21.333333 12.8 29.866666 12.8s21.333333-4.266667 29.866667-12.8L853.333333 230.4V384c0 25.6 17.066667 42.666667 42.666667 42.666667s42.666667-17.066667 42.666667-42.666667V128c0-4.266667 0-12.8-4.266667-17.066667zM396.8 567.466667L170.666667 793.6V640c0-25.6-17.066667-42.666667-42.666667-42.666667s-42.666667 17.066667-42.666667 42.666667v256c0 4.266667 0 12.8 4.266667 17.066667 4.266667 8.533333 12.8 17.066667 21.333333 21.333333 4.266667 4.266667 12.8 4.266667 17.066667 4.266667h256c25.6 0 42.666667-17.066667 42.666667-42.666667s-17.066667-42.666667-42.666667-42.666667H230.4l226.133333-226.133333c17.066667-17.066667 17.066667-42.666667 0-59.733333s-42.666667-17.066667-59.733333 0z"
+                            p-id="10086" fill="#ffffff"></path>
+                    </svg>
+
+                </div>
+                <div class="app-action-button button-red" onclick="guanbi()">
+                    <svg t="1620644096304" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="7989" width="200" height="200">
+                        <path
+                            d="M65.230769 63.261538l0 895.507692 895.507692 0L960.738462 63.261538 65.230769 63.261538zM896.615385 895.384615 128 895.384615 128 126.769231l768.615385 0L896.615385 895.384615z"
+                            p-id="7990" fill="#ffffff"></path>
+                        <path
+                            d="M339.692308 732.184615 512 559.876923 684.307692 732.184615 737.230769 679.261538 564.923077 506.953846 728.984615 342.769231 676.184615 289.969231 512 454.030769 347.815385 289.969231 295.015385 342.769231 459.076923 506.953846 286.769231 679.261538Z"
+                            p-id="7991" fill="#ffffff"></path>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <h1>用户加密Client</h1>
+        </div>
 
 
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+
+        <div class="opbox" style="text-align: center;">
+            <h3>加密操作</h3>
+            <button id="upFile" class="button button-raised button-glow button-primary button-small ">要处理的文件</button>
+
+            <button id="downindexfile" class="button button-raised button-primary button-small">下载加密索引文件</button>
+
+            <button id="downfile" class="button button-raised button-primary button-small">下载加密后文件</button>
+
+
+            <p>当前OPE(点击复制):<input id="currentope" type="text" onfocus="currentopeOnfocus()"></p>
+
+        </div>
+
+
+            <button id="addword" class="button button-raised button-primary button-small">添加用户词组</button>
+
+
+        
+
+        <br>
+
+
+        <div class="opbox" style="text-align: center;">
+            <h3>解密操作</h3>
+            <button id="upencodedfile"
+                class="button button-pill button-glow button-raised button-primary button-small">要进行解密的文件</button>
+
+            <button id="downdecodedfile"
+                class="button button-pill button-raised button-primary button-small">保存解密后的文件</button>
+        </div>
+
+        <br>
+
+        <div class="opbox" style="text-align: center;">
+            <h3>搜索索引生成</h3>
+            <input id="keywordin" type="text" placeholder="输入要查询的关键词" oninput="keywordInoninput ()">
+            <span>==></span>
+            <input id="keywordout" type="text" value="点击复制到剪贴板" onfocus="keywordOutOnfocus()">
+        </div>
+
+        <br>
+
+        <div class="opbox" style="text-align: center;">
+            <h3>ope索引生成</h3>
+            <input id="opevalue" type="text" placeholder="opevalue" oninput="opeInoninput ()"> <span>==></span>
+            <input id="operesult" type="text" value="点击复制到剪贴板" onfocus="operesultOutOnfocus()">
+        </div>
+
+        <br>
+
+        <div style="text-align: center;">
+            <h2>
+                <a id="gotoweb" href="http://localhost:8080/index" style="color: chartreuse;text-decoration: none;">前往web端</a>
+            </h2>
+        </div>
 
 
 
-    <div>
-        <h1>登录</h1>
-        <input type="text" name="name" id="name" placeholder="输入用户名">
-        <input type="text" name="password" id="password" placeholder="输入密码">
 
-        <a href="javascript:;" onclick="login()">提交</a>
-        <a href="javascript:;" onclick="saveNameAndPassword()">记住密码</a>
-        <a href="javascript:;" onclick="getCookies()">查看</a>
-        <a href="javascript:;" onclick="clearCookies()">清空</a>
+
+
+        <!-- <div class="iframebox" style="border: 8px solid red;">
+                <iframe src="http://localhost:8080/index" name="serverpage"></iframe>
+            </div>
+
+            <a href="http://localhost:8080/index" target="serverpage">刷新iframe</a> -->
 
     </div>
 
 
 
-
-    
-
 </body>
 
+<script src="./render/vue.js"></script>
+<script src="./render/index.js"></script>
 
-<script src="./render/js/index.js"></script>
+<script>
+    new Vue({
+        el: '#app-title',
+        data: {
+            testvar: 'vue是什么?'
+        }
+    })
+</script>
+
+
 </html>

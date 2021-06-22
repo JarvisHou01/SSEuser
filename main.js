@@ -1,29 +1,42 @@
-const { app, BrowserWindow } = require("electron")
+var electron = require('electron')
 
+var app = electron.app
 
-const createWindow = function () {
-    const mainWindow = new BrowserWindow({
-        width: 1500,
-        height: 1500,
+var BrowserWindow = electron.BrowserWindow
+
+var mainWindow = null
+
+const Menu = electron.Menu
+
+app.on('ready', () => {
+    Menu.setApplicationMenu(null)
+
+    
+
+    mainWindow = new BrowserWindow({
+        width: 1000,
+        height: 950,
+        frame:false,
+        //resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            enableRemoteModule: true,
-            webSecurity: false
+            enableRemoteModule: true
         }
     })
-
-    mainWindow.loadFile("index.html")
     
-    mainWindow.webContents.openDevTools()
-}
+    
+    //开发工具
+    mainWindow.webContents.openDevTools({ mode: 'detach' })
+
+    mainWindow.loadFile('index.html')
 
 
-app.on('ready', createWindow)
 
+    mainWindow.on('closed', () => {
+        
+        mainWindow = null
+        app.quit()
+    })
 
-app.on('window-all-closed', function () {
-    app.quit()
 })
-
-

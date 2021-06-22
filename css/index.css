@@ -1,0 +1,134 @@
+iframe {
+    display: block;
+    border: solid 1px;
+    height: 60vh;
+    /*设置高度百分比,一直调到只有一个滚动调为止*/
+    width: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* h3 {
+
+  margin: 10px;
+} */
+
+.opbox {
+
+    /* border-top: dashed;
+    border-bottom: dashed;
+     */
+
+
+    margin: 10px;
+    padding: 20px;
+    border:solid;
+
+    border-top: solid;
+    border-bottom: solid;
+    
+}
+
+/* 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 4px
+}
+
+::-webkit-scrollbar-button {
+    width: 8px;
+    height: 0
+}
+
+::-webkit-scrollbar-track {
+    background: 0 0
+}
+
+::-webkit-scrollbar-thumb {
+    background: blue;
+    -webkit-transition: .3s;
+    transition: .3s
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: black
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #17bbaf
+} */
+
+
+
+
+input {
+  height: 20px;
+}
+
+svg {
+  width: 20px;
+  height: 32px;
+}
+
+
+
+
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  background-color: #2d3a41;
+  color: #b2ccd6;
+
+  font-family: "Microsoft YaHei", "Avenir", "Helvetica", "Arial", "sans-serif";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+
+  user-select: none;
+}
+
+
+#app-bar {
+    background-color: #263238;
+    color: #B2CCD6;
+    display: flex;
+    -webkit-app-region: drag;
+    height: 32px;
+  }
+  
+  #app-title {
+    flex: 1;
+    padding: 7px 15px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  #app-action {
+    padding: 0;
+    font-size: 16px;
+    display: flex;
+    -webkit-app-region: no-drag;
+    text-align: center;
+  }
+  
+  .app-action-button {
+    padding: 0 8px;
+    color: #FFF;
+    transition: .2s ease;
+    opacity: 0.7;
+    line-height: 32px;
+  }
+  
+  .app-action-button:hover {
+    background-color: #436677;
+    opacity: 1;
+  }
+  
+  .app-action-button:active {
+    background-color: #3A4A52;
+  }
